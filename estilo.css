@@ -2,144 +2,147 @@
   --naranja: #f79d00;
   --verde: #64f38c;
   --amarillo: #f4bc3c;
+  --text-dark: #333333;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "open sans", sans-serif;
-}
-html{
-  min-width: 1180px;
+  font-family: "Open Sans", sans-serif;
 }
 
-button{
-  border-radius: 15px;
-  border: 0;
-  background-color: var(--naranja);
-  font-weight: bolder;
-  color: #fff;
-  width: 150px;
-  height: 30px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-}
-button:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
-}
-
-.formulario {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  font-size: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  position: relative;
-  box-sizing: border-box;
-  padding: 5%;
-  width: 600px;
-  height: 400px;
-
-}
-#V_ext{
-  width:20% ;
-}
-
-label {
-  font-size: 16px;
-  margin: 1%;
-}
-  
-.bodygenerador {
-  background: linear-gradient(to right, var(--verde), var(--naranja));
-  font-family: "open sans", sans-serif;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content:space-around;
-  min-width: 1180px;
-  min-height: 800px;
-
-}
+/* Base del cuerpo usando Flexbox para centrar horizontal y verticalmente */
 body {
   background: linear-gradient(to right, var(--verde), var(--naranja));
-
-
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-input{
-  background-color: rgba(255, 255, 255, 0.52);
-  border: none;
-  border-radius: 5px;
-  height: 30px;
+
+/* Contenedor principal para las dos tarjetas (Formulario y Firma) */
+.bodygenerador {
+  display: flex;
+  gap: 40px; /* Espacio controlado entre el formulario y la vista previa */
+  flex-wrap: wrap; /* Si la pantalla es pequeña, se apilan elegantemente */
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1300px;
   width: 100%;
-  margin: 1%;
-  font-size: large;
 }
 
-.botones{
-  border: none;
-  border-radius: 5px;
-  height: 30px;
-  width: 100%;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-/* inicio formato para todas las plantillas de firmas */
-
-.cajafirma {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 5%;
-  box-sizing: border-box;
-  width: 650px;
-  height: 400px;
+/* Formulario - Eliminamos la altura fija para que respire según su contenido */
+.formulario {
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(5px); /* Suaviza el fondo degradado detrás del contenedor */
   border-radius: 15px;
-  font-size: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
-  animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  -moz-animation: fadeIn 2s;
-  -o-animation: fadeIn 2s;
-  -ms-animation: fadeIn 2s;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espaciado uniforme entre los inputs */
 }
+
+.formulario h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenedor especial para el campo de la Extensión */
+.row-extension {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2c3e50;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Inputs estilizados uniformemente */
+input {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  height: 38px;
+  width: 100%;
+  padding: 0 12px;
+  font-size: 15px;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(247, 157, 0, 0.3);
+}
+
+/* Input específico de extensión */
+#V_ext {
+  width: 100px; /* Ancho fijo y controlado para la extensión */
+}
+
+/* Botones generales */
+button {
+  border-radius: 8px;
+  border: 0;
+  background-color: var(--naranja);
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #e08e00;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón limpiar en el formulario */
+.formulario button {
+  align-self: flex-start; /* Evita que se estire a todo lo ancho */
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333;
+  margin-top: 10px;
+}
+.formulario button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Caja de la firma (Vista previa) */
+.cajafirma {
+  background-color: #ffffff;
+  padding: 35px;
+  width: 650px;
+  min-height: 400px; /* min-height en vez de height fijo por si el contenido varía */
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Mantiene el botón de copiar abajo */
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Botón copiar dentro de la firma */
+.cajafirma button {
+  width: 220px;
+  background-color: var(--naranja);
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+/* Animación simplificada y moderna */
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-@-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-@-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-
-/* Final formato para toddas las plantillas de firmas */
-
-
-
-/* inicio plantilla 1 de firma */
-.firma1texto{
-          border:0; 
-          padding:0; 
-					color:#4c4b4c;
-					font-size:13px;
-					font-family:arial,helvetica neue,helvetica,sans-serif;
-
-  } 
-
-/* final plantilla 1 de firma */
