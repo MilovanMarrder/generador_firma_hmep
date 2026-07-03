@@ -122,8 +122,8 @@ button:hover {
 /* Caja de la firma (Vista previa) */
 .cajafirma {
   background-color: #ffffff;
-  padding: 35px;
-  width: 650px;
+  padding: 5%;
+  width: 50%;
   min-height: 400px; /* min-height en vez de height fijo por si el contenido varía */
   border-radius: 15px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);

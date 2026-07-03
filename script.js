@@ -49,9 +49,23 @@ async function ejecutar(idElemento) {
 
   try {
     const canvas = await html2canvas(elemento, {
-      backgroundColor: "#ffffff", // evita que quede fondo transparente al pegar en Outlook/Gmail
-      scale: 2                    // mejor resolución en pantallas retina/alta densidad
-    });
+  backgroundColor: "#ffffff",
+  scale: 2,
+  onclone: (clonedDoc) => {
+    const clonedElemento = clonedDoc.getElementById(idElemento);
+    if (clonedElemento) {
+      clonedElemento.style.opacity = "1";
+      clonedElemento.style.filter = "none";
+      clonedElemento.style.mixBlendMode = "normal";
+      // Forzar recursivamente en todos los hijos, por si el problema
+      // viene de un elemento anidado específico
+      clonedElemento.querySelectorAll("*").forEach((el) => {
+        el.style.opacity = "1";
+        el.style.filter = "none";
+      });
+    }
+  }
+});
 
     canvas.toBlob(async (blob) => {
       if (!blob) {
